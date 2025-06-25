@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
   selector: 'app-root',
   imports: [HomeComponent],
   templateUrl: './app.html',
-  styleUrl: './app.sass'
+  styleUrl: './app.scss'
 })
 export class App {
   protected title = 'FAngular';

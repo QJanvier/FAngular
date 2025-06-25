@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location';
 
 @Component({
   selector: 'app-home',
-  imports: [HousingLocationComponent],
+  imports: [HousingLocationComponent, CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  housingLocations: HousingLocation[] = [
-     {
+  housingLocationList: HousingLocation[] = [
+    {
       id: 0,
       name: 'Acme Fresh Start Housing',
       city: 'Chicago',
