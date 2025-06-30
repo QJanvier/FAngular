@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,13 +7,13 @@ import { ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
   route: ActivatedRoute= inject(ActivatedRoute);
   housingLocationId=0;
 
-  constructor() {
-    this.housingLocationId = Number(this.route.snapshot.params['id']);
+  ngOnInit(): void {
+    this.housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
   }
 }
