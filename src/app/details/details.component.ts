@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { HousingService } from '../housing';
+import { HousingLocation } from '../housing-location';
 
 @Component({
   selector: 'app-details',
@@ -11,9 +13,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
   route: ActivatedRoute= inject(ActivatedRoute);
-  housingLocationId=0;
+  housingService = inject(HousingService);
+  housingLocation: HousingLocation | undefined;
 
   ngOnInit(): void {
-    this.housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
+    const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
+    this.housingLocation = this.housingService.
+    getHousingLocationById(housingLocationId);
   }
 }
