@@ -1,3 +1,5 @@
+:host {
+
 .results {
     display: grid;
     column-gap: 14px;
@@ -38,4 +40,5 @@ button {
     .results {
         grid-template-columns: 1fr;
     }
+}
 }
