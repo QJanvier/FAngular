@@ -9,7 +9,7 @@ const routes = require('./routes')
 
 mongoose.connect('mongodb://localhost/FAngu')
   .then(() => console.log('Connected to database'))
-  .catch((err) => console.log('Error ${err}'));
+  .catch((err: unknown) => console.log(`Error ${err}`));
 
 app.use(express.json())
 app.use(cookieParser("mySecret"))
@@ -33,9 +33,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server running on port ${PORT}`))
 
 
-app.get('/',  (req: Request, res: Response) => {
-  req.session.visited = true
-  res.cookie('Pedro', 'express', { maxAge: 6000, signed: true})
-  res.status(201).send({msg: 'Hello World!'})
-})
+
  
