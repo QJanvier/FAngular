@@ -33,7 +33,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server running on port ${PORT}`))
 
 
-app.get('/', function (req, res) {
+app.get('/',  (req: Request, res: Response) => {
   req.session.visited = true
   res.cookie('Pedro', 'express', { maxAge: 6000, signed: true})
   res.status(201).send({msg: 'Hello World!'})
