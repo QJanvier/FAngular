@@ -1,6 +1,8 @@
 const router = require("express").Router();
+const express, { Request, Response } = require("express");
+const session = require("express-session");
 const usersRoutes = require("./users");
-const app = require('../app')
+app.use(express.json())
 router.use(usersRoutes);
 
 module.exports = router;
@@ -16,9 +18,13 @@ export interface BaseRoute {
   pathMatch?: string;
 }
 
+// Extend Request type to include session property
+interface SessionRequest extends Request {
+  session: any;
+}
 
-router.get<>('/',  (req, res) => {
-  req.session.visited = true
-  res.cookie('Pedro', 'express', { maxAge: 6000, signed: true})
-  res.status(201).send({msg: 'Hello World!'})
-})
+router.get('/', (req: SessionRequest, res: Response) => {
+  req.session.visited = true;
+  res.cookie('Pedro', 'express', { maxAge: 6000, signed: true });
+  res.status(201).send({ msg: 'Hello World!' });
+});
